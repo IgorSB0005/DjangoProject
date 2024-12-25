@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Post list</title>
-    </head>
+{% extends 'navigation.html' %}
 
-    <body>
-        <h1>Post list</h1>
-    </body>
-</html>
+{% block title %}
+    Posts List
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Posts List</h1>
+
+        {% for post in posts %}
+            <article class="post">
+                <h2><a href="{% url 'posts:page' slug=post.slug %}">{{post.title}}</a></h2>
+                <p>{{post.date}} by {{post.author}}</p>
+                <p>{{post.body}}</p>
+            </article>
+        {% endfor %}
+
+    </section>
+{% endblock %}

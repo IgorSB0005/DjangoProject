@@ -1,0 +1,16 @@
+{% extends 'navigation.html' %}
+
+{% block title %}
+    {{posts.title}}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>New post</h1>
+        <form class="form-with-validation" action="{% url 'posts:new-post' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button class="form_submit">Add post</button>
+        </form>
+    </section>
+{% endblock %}

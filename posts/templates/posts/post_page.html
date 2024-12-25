@@ -1,0 +1,14 @@
+{% extends 'navigation.html' %}
+
+{% block title %}
+    {{posts.title}}
+{% endblock %}
+
+{% block content %}
+    <section>
+        <img class = "banner" src = "{{posts.banner.url}}" alt = "{{posts.title}}">
+        <h1>{{posts.title}}</h1>
+        <p>{{posts.date}}</p>
+        <p>{{posts.body}}</p>
+    </section>
+{% endblock %}
