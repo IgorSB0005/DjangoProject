@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from . import forms
 from django.http import HttpResponse
@@ -25,3 +25,13 @@ def post_new(request):
     else:
         form = forms.CreatePost()
     return render(request, 'posts/post_new.html', {'form' : form})
+
+@login_required(login_url="/users/login/")
+def like_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.user in post.likes.all():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    return redirect(request.META.get('HTTP_REFERER', 'posts:list'))
+

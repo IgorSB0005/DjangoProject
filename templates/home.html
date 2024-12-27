@@ -5,5 +5,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Home</h1>
+    <section class="home-page">
+        <h1>Welcome to SocialNet!</h1>
+        <p>SocialNet is a modern social network where you can share your thoughts, photos, and ideas with friends and the world. We provide a platform for communication, creativity, and inspiration.</p>
+
+        <h2>Why choose us?</h2>
+        <ul>
+            <li>📸 Share your photos and moments.</li>
+            <li>💬 Communicate with friends and meet new people.</li>
+            <li>❤️ Support each other with likes and comments.</li>
+            <li>🔒 Your data privacy and security are our priority.</li>
+        </ul>
+
+        <h2>Start today!</h2>
+        <p>Create an account or log in to start sharing your stories and explore content from other users.</p>
+        <a href="{% url 'users:register' %}" class="btnHome">Register</a>
+        <a href="{% url 'posts:list' %}" class="btnHome">View Posts</a>
+    </section>
 {% endblock %}

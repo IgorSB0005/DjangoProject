@@ -5,16 +5,24 @@
 {% endblock %}
 
 {% block content %}
-    <section>
+    <section class="posts-list">
         <h1>Posts List</h1>
 
         {% for post in posts %}
             <article class="post">
-                <h2><a href="{% url 'posts:page' slug=post.slug %}">{{post.title}}</a></h2>
-                <p>{{post.date}} by {{post.author}}</p>
-                <p>{{post.body}}</p>
+                <header class="post-header">
+                    <h2 class="post-title">
+                        <a href="{% url 'posts:page' slug=post.slug %}">{{ post.title }}</a>
+                    </h2>
+                    <p class="post-meta">{{ post.date }} by {{ post.author }}</p>
+                </header>
+                <div class="post-body">
+                    <p>{{ post.body|truncatewords:50 }}</p>
+                </div>
+                <footer class="post-footer">
+                    <a href="{% url 'posts:page' slug=post.slug %}" class="read-more">Read More</a>
+                </footer>
             </article>
         {% endfor %}
-
     </section>
 {% endblock %}

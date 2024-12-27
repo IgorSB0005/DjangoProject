@@ -38,7 +38,7 @@
     {% if user.is_authenticated %}
     <a href="{% url 'posts:new-post' %}">New Posts</a>
     {% endif %}
-    <a href="{% url 'posts:list' %}">Posts</a>
+    <a href="{% url 'posts:list' %}" id="navigation-posts-list">Posts</a>
   </div>
     <main>
         {% block content %}

@@ -5,10 +5,25 @@
 {% endblock %}
 
 {% block content %}
-    <section>
-        <img class = "banner" src = "{{posts.banner.url}}" alt = "{{posts.title}}">
+    <section class="sectionPage">
+        <a href="{% url 'posts:list' %}" id="back-arrow-postPage">← Back to Posts</a>
+        <img class = "banner" src = "{{posts.banner.url}}" alt = "">
         <h1>{{posts.title}}</h1>
         <p>{{posts.date}}</p>
         <p>{{posts.body}}</p>
+
+      <div class="like-system">
+            <form action="{% url 'posts:like_post' posts.slug %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="like-button">
+                    {% if user in posts.likes.all %}
+                        ❤️ Unlike
+                    {% else %}
+                        🤍 Like
+                    {% endif %}
+                </button>
+                <span class="like-count">{{ posts.likes.count }}</span>
+            </form>
+        </div>
     </section>
 {% endblock %}

@@ -7,10 +7,25 @@
 {% block content %}
     <section>
         <h1>New post</h1>
-        <form class="form-with-validation" action="{% url 'posts:new-post' %}" method="post" enctype="multipart/form-data">
+         <form class="form-with-validation" action="{% url 'posts:new-post' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
-            <button class="form_submit">Add post</button>
+            <div class="form-group">
+                <label for="id_title">Title:</label>
+                <input type="text" class="form-control" name="title" maxlength="100" required="" id="id_title">
+            </div>
+            <div class="form-group">
+                <label for="id_body">Body:</label>
+                <textarea name="body" class="form-control" cols="40" rows="10" required="" id="id_body"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_slug">Slug:</label>
+                <input type="text" class="form-control" name="slug" maxlength="50" required="" id="id_slug">
+            </div>
+            <div class="form-group">
+                <label for="id_banner">Banner:</label>
+                <input type="file" name="banner" accept="image/*" id="id_banner">
+            </div>
+            <button class="form-submit">Add Post</button>
         </form>
     </section>
 {% endblock %}

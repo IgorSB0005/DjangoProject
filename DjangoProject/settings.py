@@ -9,10 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import os
 from pathlib import Path
 
-from django.conf.global_settings import MEDIA_URL
+from django.conf.global_settings import MEDIA_URL, STATIC_ROOT, MEDIA_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +26,7 @@ SECRET_KEY = 'django-insecure-5gso7%vj5#l(kprjr3op7k@_f%1-d5ia+e)m#qr$3ptn&@jo&9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -122,10 +121,11 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = BASE_DIR / 'assets'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    BASE_DIR / 'static'
 ]
 
 # Default primary key field type
